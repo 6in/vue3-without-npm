@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- <style>
+        .title-custom {
+            padding: 0px 0px 10px 0px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .btn-custom {
+            margin-right: 20px;
+        }
+
+        .btn-label {
+            position: relative;
+            left: -12px;
+            display: inline-block;
+            padding: 6px 12px;
+            background: rgba(0, 0, 0, 0.15);
+            border-radius: 3px 0 0 3px;
+        }
+
+        .btn-labeled {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        .btn {
+            margin-bottom: 10px;
+        }
+
+        .handsontable th,
+        .handsontable td {
+            padding: 2px 10px 2px 10px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .handsontable th:last-child {
+            padding-left: 8px;
+            text-align: left;
+        }
+
+        .handsontable td:first-child {
+            background: #EEE;
+        }
+    </style> -->
+    <meta charset="UTF-8" />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;1,700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable@12.1.2/dist/handsontable.full.min.css">
+
+    <link href="https://unpkg.com/primevue/resources/themes/lara-light-indigo/theme.css" rel="stylesheet">
+    <link href="https://unpkg.com/primevue/resources/primevue.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/primeicons/primeicons.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue3-sfc-loader@0.8.4/dist/vue3-sfc-loader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handsontable@12.1.2/dist/handsontable.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@handsontable/vue3@12.1.2/dist/vue-handsontable.min.js"></script>
+ 
+    <script src="https://unpkg.com/primevue/core/core.min.js"></script>
+    <script src="https://unpkg.com/primevue/utils/utils.min.js"></script>
+    <script src="https://unpkg.com/primevue/slider/slider.min.js"></script>
+    <script src="https://unpkg.com/primevue@^3/calendar/calendar.min.js"></script>
+
+    <div id="app"></div>
+    <script>
+
+        const options = {
+            moduleCache: {
+                vue: Vue,
+                Handsontable,
+            }
+            ,
+            getFile(url) {
+                if (url === '/menu/index.vue') {
+                    return fetch("./apps/menu/index.vue")
+                        .then(response => {
+                            return response.text()
+                        })
+                }
+            },
+            addStyle() {
+                /* unused here */
+            }
+            ,
+        }
+
+        const { loadModule } = window['vue3-sfc-loader'];
+        const app = Vue.createApp(
+            Vue.defineAsyncComponent(() => loadModule('/menu/index.vue', options))
+        )
+        app.use(primevue.config.default)
+        app.mount("#app");
+
+    </script>
+</body>
+
+</html>
